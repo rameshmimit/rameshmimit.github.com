@@ -13,24 +13,14 @@ permalink: /:title/
 
 # Authors
 authors:
-  sal:
-    name: Sal
-    display_name: Sal
-    gravatar: e56154546cf4be74e393c62d1ae9f9d4
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net
-    twitter: https://twitter.com/wowthemesnet
-    description: "Author of Mediumish, a Bootstrap Medium styled template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
-  john:
-    name: John
-    display_name: John
-    avatar: 'assets/images/avatar.png'
-    gravatar: b1cc14991db7a456fcd761680bbc8f81
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net
-    twitter: https://twitter.com/wowthemesnet
-    description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
-
+  ramesh:
+    name: Ramesh
+    display_name: Ramesh Kumar
+    gravatar: 44c9276b1fef331361bf9222b63fddb0
+    email: ramesh.kumar@linuxtrove.com
+    web: https://www.linuxtrove.com
+    twitter: https://twitter.com/rameshmimit
+    description: "Creating this blog to share my knowledge with the community"
 # Plugins
 plugins:
   - jekyll-paginate
