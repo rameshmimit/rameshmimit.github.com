@@ -23,7 +23,8 @@ Amazon Web Services(AWS), CloudFormation, ElasticBeanstalk, CodePipeline, CodeCo
 </p>
 
 <p>You can view my complete profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a><br />
-Head over to my @<a href="https://github.com/rameshmimit">Github</a></p>
+@<a href="https://github.com/rameshmimit">Github</a></p>
+@<a href="https://stackoverflow.com/users/446406/ramesh-mimit">StackOverflow</a></p>
 
 </div>
 
