@@ -22,9 +22,8 @@ Red Hat Certified Engineer</p>
 Amazon Web Services(AWS), CloudFormation, ElasticBeanstalk, CodePipeline, CodeCommit, CodeDeploy, CodeBuild, CodeStar, Lambda, OpsWorks, Docker, ECS, IAM, Route53, SNS, CloudWatch, CloudTrail, SQS, EC2, S3, ACM, API Gateway, ELK, EKS, Kubernetes, Puppet, Chef, Ansible, Puppet, GitHub, Jira, letsencrypt, Jenkins, Vagrant, Packer, Terraform, Nagios, PagerDuty, NewRelic, and so on.
 </p>
 
-<p>You can view my complete profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a></p>
-
-<p>Head over to my @<a href="https://github.com/rameshmimit">Github</a></p>
+<p>You can view my complete profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a><br />
+Head over to my @<a href="https://github.com/rameshmimit">Github</a></p>
 
 </div>
 
