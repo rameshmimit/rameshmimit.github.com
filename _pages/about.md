@@ -13,9 +13,16 @@ comments: true
 <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/profile.jpg" alt="profile image" /></p>
 <h4>Profile</h4>
 
-<p>You can view my profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a></p>
+<h5>Certifications</h5>
+<p>AWS Solution Architect Associate <br />
+Red Hat Certified Engineer</p>
 
+<h5>Specialities</h5>
+<p>
+Amazon Web Services(AWS), CloudFormation, ElasticBeanstalk, CodePipeline, CodeCommit, CodeDeploy, CodeBuild, CodeStar, Lambda, OpsWorks, Docker, ECS, IAM, Route53, SNS, CloudWatch, CloudTrail, SQS, EC2, S3, ACM, API Gateway, ELK, EKS, Kubernetes, Puppet, Chef, Ansible, Puppet, GitHub, Jira, letsencrypt, Jenkins, Vagrant, Packer, Terraform, Nagios, PagerDuty, NewRelic, and so on.
+</p>
 
+<p>You can view my complete profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a></p>
 
 <p>Head over to my @<a href="https://github.com/rameshmimit">Github</a></p>
 
