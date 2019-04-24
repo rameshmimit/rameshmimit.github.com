@@ -20,7 +20,7 @@ authors:
     email: ramesh.kumar@linuxtrove.com
     web: https://www.linuxtrove.com
     twitter: https://twitter.com/rameshmimit
-    description: "Creating this blog to share my knowledge with the community"
+    description: "Sharing knowledge with the community"
 # Plugins
 plugins:
   - jekyll-paginate

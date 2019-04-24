@@ -8,28 +8,28 @@ comments: true
 <div class="row justify-content-between">
 <div class="col-md-8 pr-5">
 
-<p>Building my new Blog website with Github Pages using Jekyll and Github pages. </p>
+<p> Hi, I am a DevOps Engineer, consultant and freelancer. I've worked on wide variety of DevOps and automation projects. Also worked with different startups and helped them to setup and automate their infra using different tools and different Cloud providers like <a href="https://aws.amazon.com/"> AWS</a>, <a href="https://cloud.google.com/">GCP</a>, <a href="https://azure.microsoft.com/en-au/">Azure</a>.</p>
 
-<p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/mediumish-jekyll-template.png" alt="jekyll template mediumish" /></p>
-<h4>Documentation</h4>
+<p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/profile.jpg" alt="profile image" /></p>
+<h4>Profile</h4>
 
-<p>Please, read the docs <a href="https://bootstrapstarter.com/bootstrap-templates/template-mediumish-bootstrap-jekyll/">here</a>.</p>
+<p>You can view my profile @<a href="https://linkedin.com/in/linuxtrove/" target="_blank" >LinkedIn </a></p>
 
-<h4>Questions or bug reports?</h4>
 
-<p>Head over to our <a href="https://github.com/wowthemesnet/mediumish-theme-jekyll">Github repository</a>!</p>
+
+<p>Head over to my @<a href="https://github.com/rameshmimit">Github</a></p>
 
 </div>
 
 <div class="col-md-4">
 
-<div class="sticky-top sticky-top-80">
-<h5>Buy me a coffee</h5>
+<!-- <div class="sticky-top sticky-top-80"> -->
+<!-- <h5>Buy me a coffee</h5> -->
 
-<p>Thank you for your support! Your donation helps me to maintain and improve <a target="_blank" href="https://github.com/wowthemesnet/mediumish-theme-jekyll">Mediumish <i class="fab fa-github"></i></a>.</p>
+<!-- <p>Thank you for your support! Your donation helps me to maintain and improve <a target="_blank" href="https://linuxtrove.com">LinuxTrove <i class="fab fa-github"></i></a>.</p> -->
 
-<a target="_blank" href="https://www.wowthemes.net/donate/" class="btn btn-danger">Buy me a coffee</a> <a target="_blank" href="https://bootstrapstarter.com/bootstrap-templates/template-mediumish-bootstrap-jekyll/" class="btn btn-warning">Documentation</a>
+<!-- <a target="_blank" href="https://www.wowthemes.net/donate/" class="btn btn-danger">Buy me a coffee</a> <a target="_blank" href="https://bootstrapstarter.com/bootstrap-templates/template-mediumish-bootstrap-jekyll/" class="btn btn-warning">Documentation</a> -->
 
-</div>
+<!-- </div> -->
 </div>
 </div>
