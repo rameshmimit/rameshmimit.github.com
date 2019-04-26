@@ -1,27 +1,43 @@
 ---
 layout: post
-title:  "Test Post"
+title:  "Best practices for implementing Lambda-backed custom CloudFormation resources"
 author: Ramesh
-categories: [ DevOps ]
-image: assets/images/12.jpg
+categories: [ CloudFormation, CustomResources, DevOps ]
+image: assets/images/CloudFormation-Custom-Resource.png
 featured: true
 hidden: true
 ---
 
-Director Roland Suso Richter's enigmatic psychological thriller (direct to video/DVD) was based upon screenwriter Michael Cooney's own play "Point of Death" - a title that gave away the film's entire plot twist premise.
+When implementing Lambda-backed custom resources in your CloudFormation stack, consider the following best practices:
 
-As in many similar films, such as Jacob's Ladder (1990), Soul Survivors (2001), and The Butterfly Effect (2004), events and people were thoroughly distorted and confused because the protagonist was at the point of death. The tagline was misleading:
+#### Build your custom resources to report, log, and handle failure gracefully
+Exceptions can cause your function code to exit without sending a response. Because CloudFormation requires an HTTPS response to confirm whether the operation was a success or a failure, an unreported exception will cause CloudFormation to wait until the operation times out before starting a stack rollback. If the exception occurs again on rollback, CloudFormation will wait again for a timeout before ultimately ending in a rollback failure. During this time, your stack is unusable, and timeout issues can be time-consuming to troubleshoot.
 
-"When You Don't Have a Memory, How Can You Remember Who to Trust?"
+To avoid this, make sure that your function's code has logic to handle exceptions, the ability to log the failure to help you troubleshoot, and if needed, the ability to  respond back to CloudFormation with an HTTPS response confirming that an operation failed.
 
-The mind-warping film opened with a hospital patient Simon Cable (Ryan Phillippe) awakening in a <span class="spoiler"> hospital with little knowledge (amnesia perhaps?) of what had happened, and why he was there, etc. He was told by attending Dr. Jeremy Newman (Stephen Rea) that it was July 29, 2002 (Simon thought it was the year 2000 - he was confused - he heard a doctor say 20:00 hours!) and that he had died for two minutes from cardiac arrest following the near-fatal accident -- but he had been revived ("You're as good as new").</span> Dr. Newman: "Simon, this is the 29th of July. The year is 2002. And your wife, whose name is Anna, is waiting outside."
+#### Set reasonable timeout periods, and report when they're about to be exceeded
+If an operation doesn't execute within its defined timeout period, the function raises an exception and no response is sent to CloudFormation.
 
-(The doctor left off four crucial additional words, revealed in the film's ending.) (Spoiler: Simon had died and was not resuscitated!).
+To avoid this, ensure that the timeout value for your Lambda functions is set high enough to handle variations in processing time and network conditions. Consider also setting a timer in your function to respond to CloudFormation with an error when a function is about to time out; this can help prevent function timeouts from causing custom resource timeouts and delays.
 
-A major clue to everything that truly happened was the scene that played next under the credits - hospital staff failed to bring a patient back to life with a defibrillator after a car accident. Chest compressions failed and there was no pulse. A second major clue was provided by hospital orderly Travis (Stephen Graham): <span class="spoiler">Everybody dies. No mystery there. But why and how everyone dies. Now, there's a mystery worth solving. Probably the biggest mystery there is.</span>
+#### Understand and build around [Create](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/crpg-ref-requesttypes-create.html), [Update](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/crpg-ref-requesttypes-update.html), and [Delete](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/crpg-ref-requesttypes-delete.html) events
+Depending on the stack action, CloudFormation sends your function a Create, Update, or Delete event. Each event is handled distinctively, so you should ensure that there are no unintended behaviors when any of the three event types is received.
 
-#### So how do we do spoilers?
+For more information, see [Custom Resource Request Types](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/crpg-ref-requesttypes.html).
 
-```html
-<span class="spoiler">My hidden paragraph here.</span>
-```
+#### Make sure that your functions are designed with idempotency in mind
+An idempotent function can be repeated any number of times with the same inputs, and the result will be the same as if it had been done only once. Idempotency is valuable when working with CloudFormation to ensure that retries, updates, and rollbacks don't cause the creation of duplicate resources, errors on rollback or delete, or other unintended effects.
+
+For example, if CloudFormation invokes your function to create a resource, but doesn't receive a response that the resource was created successfully, CloudFormation might invoke the function again, resulting in the creation of a second resource; the first resource may become orphaned.
+
+How to address this can differ depending on the action your function is intended to perform, but a common technique is to use a uniqueness token that CloudFormation can use to check for preexisting resources. For example, a hash of the StackId and LogicalResourceId could be stored in the resource's metadata or in a DynamoDB table.
+
+
+#### Rollbacks
+If a stack operation fails, CloudFormation attempts to roll back, reverting all resources to their prior state. This results in different behaviors depending on whether the update caused a resource replacement.
+
+Ensuring that replacements are properly handled and the old resources are not implicitly removed until a delete event is received will help ensure that rollbacks are executed smoothly.
+
+
+
+To help implement best practices when using custom resources, consider using the [Custom Resource Helper](https://github.com/awslabs/aws-cloudformation-templates/tree/master/community/custom_resources/python_custom_resource_helper) provided by [awslabs](https://github.com/awslabs), which can assist with exception and timeout trapping, sending responses to CloudFormation, and logging.
