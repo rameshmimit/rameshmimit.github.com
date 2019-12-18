@@ -8,10 +8,10 @@ hidden: false
 ---
 
 ## Introduction
-Working on Kubernetes can be cumbersome and time consuming specially, when you are working on multiple cluster. I have compiled a list of couple of tools, which can really help you to enhance your productivity while working on kubernetes.
+Working on Kubernetes can be cumbersome and time consuming especially, when you are working on multiple clusters. I have compiled the below list of tools, which really helped me to enhance my productivity while working on kubernetes.
 
 ### Kubectx
-Kubectx is a tool to switch between kubernetes contexts. It is written by 'Ahmet Alp Balkan' and he works for Google Cloud as Developer advocate. It is really handy tool especially when you are working with multiple clusters. Kubectx works seamlessly with different shells like Bash, Zsh, fish etc.
+Kubectx is a tool to switch between kubernetes contexts. It is written by 'Ahmet Alp Balkan' and he works for Google Cloud as Developer advocate. It is really handy tool especially when you are working with multiple clusters. It can save lot of typing time and helps you quickly switch back and forth between different clusters. Kubectx works seamlessly with different shells like Bash, Zsh, fish etc.
 
 #### Installation
 'Kubectx' can be installed on MacOS and different linux distributions like CentOS, AmazonLinux, Ubuntu, Archlinux etc.
