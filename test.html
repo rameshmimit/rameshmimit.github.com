@@ -1,0 +1,66 @@
+<h2>Introduction:</h2>
+Building a successful product depends on two fundamentals — functionality and performance.
+
+‘Functionality’ refers to what the application lets its users accomplish, including the transactions it enables and the information it renders accessible.
+
+‘Performance’ refers to the system’s ability to complete transactions and to furnish information rapidly and accurately despite high multi-user interaction or constrained hardware resources.
+
+Application failure due to performance-related problems is preventable with pre-deployment performance testing. However, most teams struggle because of lack of professional performance testing methods, and guaranteeing problems with regard to availability, reliability and scalability, when deploying their application on to the “real world”. Performance or Load testing is important for all types of applications and systems, especially for life critical applications in Healthcare, Medical, Biotech and Drug discovery systems, and also mission critical applications such as Automotives, Flight control, defense, etc.
+<h2><strong>Testing Methodologies: </strong></h2>
+Generally, there are many categories for software or application testing. However, when applications are deployed in Kubernetes, most importance aspect is to make sure your infra scales well and you are utilising the available system resources in most efficient manner. Below are three main types of testings, one would perform to make sure your application is running smoothly and systems resources are used at their optimal level.
+
+<img class="alignnone size-full wp-image-17628" src="https://leftshifthome.files.wordpress.com/2020/02/screen-shot-2020-02-09-at-4.38.49-pm.png" alt="Screen Shot 2020-02-09 at 4.38.49 pm" width="1422" height="496" />
+
+<strong>Performance Testing:</strong>
+Performance testing is the general name for tests that check how the system behaves and performs. Performance testing examines responsiveness, stability, scalability, reliability, speed and resource usage of your software and infrastructure. Different types of performance tests provide you with different data.
+
+<strong>Load Testing:</strong>
+Load testing is testing that checks how systems function under a heavy number of concurrent requests, could be related to users performing transactions over a certain period of time. Or in other words, how systems handle heavy load volumes.
+
+<strong>Stress Testing:</strong>
+Stress testing is testing that checks the upper limits of your system by testing it under extreme loads. The testing examines how the system behaves under intense loads, and how it recovers when going back to normal usage, i.e are the KPIs like throughput and response time the same as before. In addition to load testing KPIs, stress testing also examines memory leaks, slowness, security issues and data corruption.
+<h2><strong>Tools:</strong></h2>
+There are few open-source performance testing tools which can be used for Kubernetes Load testing. Locust and Gatling are the most common and efficient tools.
+
+<strong>Locust:</strong>
+Locust is an easy-to-use, distributed, user load testing tool. It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. Locust is easy to setup and use as compare to traditional load testing tools like apache Jmeter or Tsung.
+
+<img class="alignnone size-full wp-image-17622" src="https://leftshifthome.files.wordpress.com/2020/02/locust.png" alt="locust" width="2000" height="1242" />
+
+Locust can be setup and configured using <a href="https://github.com/helm/charts/tree/master/stable/locust" target="_blank" rel="noopener">Helm charts</a> for Kubernetes.
+
+In addition to Locust you should be looking for your cluster metrics during the testing for cluster resources.
+
+<img class="alignnone size-full wp-image-17623" src="https://leftshifthome.files.wordpress.com/2020/02/screen-shot-2020-02-09-at-3.35.16-pm.png" alt="Screen Shot 2020-02-09 at 3.35.16 pm" width="1418" height="806" />
+
+<strong>Gatling:</strong>
+Gatling is a highly capable load testing tool. It is designed for ease of use, maintainability and high performance. Gatling comes with open-source and enterprise offerings.
+
+Out of the box, Gatling comes with excellent support of the HTTP protocol that makes it a tool of choice for load testing any HTTP server.
+
+<img class="alignnone size-full wp-image-17625" src="https://leftshifthome.files.wordpress.com/2020/02/gatling.png" alt="gatling" width="960" height="554" />
+
+Gatling is extremely powerful tool and gives you great insights to different metrics which can help you to determine the right kind of resource limits for your pods and application. However at the same time it is quite complex to setup.
+
+<strong>Kboom: </strong>
+Kboom, allowing you to create short-term load for scale testing and long-term load for soak testing. It leverages the Kubernetes jobs object to run load tests to find how many pods can be placed in your cluster.
+You can follow the instructions for Kboom setup and configuration from their official <a href="https://github.com/mhausenblas/kboom" target="_blank" rel="noopener">GitHub repo</a>.
+
+Results of the Kboom test results would look like as below:
+
+<img class="alignnone size-full wp-image-17632" src="https://leftshifthome.files.wordpress.com/2020/02/screen-shot-2020-02-09-at-3.16.28-pm.png" alt="Screen Shot 2020-02-09 at 3.16.28 pm" width="1624" height="628" />
+
+<strong>Apache Benchmark(ab):</strong>
+Apache Benchmark can be very useful if you want to see how a certain factor(s) hold up under a specific amount of a certain stress. You can use apache benchmark against your Application Kubernetes service. For perform the testing you can expose the service using <em><strong>kubctl port-forward app_service port </strong></em>command. Now you can use the below commands to test your application server.
+
+<strong>Apache Benchmark Example:</strong>
+500 requests, with a maximum concurrency of 10 at a time
+<strong><em>$ ab -c 10 —n 500 —r localhost:8000/api/books</em></strong>
+By default, AB will perform a GET request so if you need to test another type of request you will have to pass it the specific option You can also set the content-type header of the request with the —T flag.  For example, to send POST requests with a specific file used as the POST data, the command would look like as below:
+<em><strong>$ ab -c 10 -n 500 -p event.json -r -T application/json localhost:8000/api/books</strong></em>
+
+Sample output of the ab tests:
+
+<img class="alignnone size-full wp-image-17635" src="https://leftshifthome.files.wordpress.com/2020/02/apache_benchmark.png" alt="apache_benchmark" width="802" height="884" />
+
+You can find more information about apache benchmark using 'man ab' or their <a href="https://httpd.apache.org/docs/2.4/programs/ab.html" target="_blank" rel="noopener">official documentation.</a>
